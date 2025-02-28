@@ -1,0 +1,19 @@
+import { Film } from "../models/Film";
+import { fetchFilmList } from "../api/filmApi";
+
+export const renderFilmList = async () => {
+  const filmList = document.getElementById("film-list")!;
+  const films = await fetchFilmList();
+
+  films.forEach((film: Film) => {
+    const filmCard = document.createElement("div");
+    filmCard.className = "film-card";
+    filmCard.innerHTML = `
+      <img src="${film.images[0].image.url}" alt="${film.name}" />
+      <h3>${film.name}</h3>
+      <p>${film.productionYear}</p>
+    `;
+    filmCard.addEventListener("click", () => renderFilmDetail(film.id));
+    filmList.appendChild(filmCard);
+  });
+};

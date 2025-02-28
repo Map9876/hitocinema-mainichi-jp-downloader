@@ -1,0 +1,137 @@
+/* 基础样式 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#app {
+  padding: 10px;
+}
+
+/* 电影列表 */
+#film-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 每列最小宽度 120px */
+  gap: 10px; /* 卡片间距 */
+}
+
+/* 电影卡片 */
+.film-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.film-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 图片容器 */
+.film-card img {
+  width: 100%; /* 图片宽度占满卡片 */
+  height: 120px; /* 固定图片高度 */
+  object-fit: cover; /* 保持图片比例，避免变形 */
+  border-radius: 8px;
+}
+
+/* 电影名称 */
+.film-card h3 {
+  font-size: 14px; /* 减小文字大小 */
+  margin: 8px 0 4px;
+  white-space: nowrap; /* 防止文字换行 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 超出部分显示省略号 */
+}
+
+/* 电影年份 */
+.film-card p {
+  font-size: 12px; /* 减小文字大小 */
+  color: #666;
+}
+
+/* 电影详情页 */
+#film-detail {
+  display: none;
+  padding: 10px;
+}
+
+#film-images img {
+  width: 100%; /* 图片宽度占满容器 */
+  max-height: 200px; /* 限制图片最大高度 */
+  object-fit: cover; /* 保持图片比例，避免变形 */
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+#back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#back-button:hover {
+  background: #0056b3;
+}
+
+/* 分页按钮 */
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap; /* 允许分页按钮换行 */
+}
+
+.page-button {
+  padding: 8px 12px;
+  margin: 5px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.page-button:hover {
+  background: #0056b3;
+  transform: scale(1.1);
+}
+
+.page-button.active {
+  background: #0056b3;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  #film-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* 手机端每列最小宽度 100px */
+  }
+
+  .film-card img {
+    height: 100px; /* 手机端图片高度 */
+  }
+
+  .film-card h3 {
+    font-size: 12px; /* 手机端文字大小 */
+  }
+
+  .film-card p {
+    font-size: 10px; /* 手机端文字大小 */
+  }
+
+  #film-images img {
+    max-height: 150px; /* 手机端图片最大高度 */
+  }
+}

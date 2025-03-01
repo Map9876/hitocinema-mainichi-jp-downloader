@@ -18,12 +18,15 @@ body {
 }
 
 /* 电影卡片 */
+/* 电影卡片 */
 .film-card {
+  display: block; /* <a> 标签默认是行内元素，改为块级元素 */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
-  cursor: pointer;
+  text-decoration: none; /* 去掉下划线 */
+  color: inherit; /* 继承文字颜色 */
   transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
 }
@@ -33,26 +36,26 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* 图片容器 */
+/* 电影卡片图片 */
 .film-card img {
-  width: 100%; /* 图片宽度占满卡片 */
-  height: 120px; /* 固定图片高度 */
-  object-fit: cover; /* 保持图片比例，避免变形 */
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
 /* 电影名称 */
 .film-card h3 {
-  font-size: 14px; /* 减小文字大小 */
+  font-size: 14px;
   margin: 8px 0 4px;
-  white-space: nowrap; /* 防止文字换行 */
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* 超出部分显示省略号 */
+  text-overflow: ellipsis;
 }
 
 /* 电影年份 */
 .film-card p {
-  font-size: 12px; /* 减小文字大小 */
+  font-size: 12px;
   color: #666;
 }
 

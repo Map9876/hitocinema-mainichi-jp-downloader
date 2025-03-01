@@ -13,47 +13,35 @@ body {
 /* 电影列表 */
 #film-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 修改：每列最小宽度 150px */
-  gap: 0; /* 修改：去掉卡片间距 */
-  padding: 0; /* 修改：去掉内边距 */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 每列最小宽度 120px */
+  gap: 10px; /* 卡片间距 */
 }
 
+/* 电影卡片 */
 /* 电影卡片 */
 .film-card {
   display: block; /* <a> 标签默认是行内元素，改为块级元素 */
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 0; /* 修改：去掉圆角 */
-  padding: 0; /* 修改：去掉内边距 */
+  border-radius: 8px;
+  padding: 10px;
   text-decoration: none; /* 去掉下划线 */
   color: inherit; /* 继承文字颜色 */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 修改：增加动画效果 */
+  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
-  overflow: hidden; /* 新增：隐藏超出部分 */
-  position: relative; /* 新增：用于定位动画效果 */
 }
 
 .film-card:hover {
-  transform: translateY(-5px) scale(1.05); /* 修改：悬停时向上移动并放大 */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 修改：增加阴影 */
-  z-index: 10; /* 新增：确保悬停的图片在最上层 */
-}
-
-/* 延迟堆叠效果 */
-.film-card:nth-child(odd) {
-  transition-delay: 0.1s; /* 新增：奇数卡片延迟 */
-}
-
-.film-card:nth-child(even) {
-  transition-delay: 0.2s; /* 新增：偶数卡片延迟 */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* 电影卡片图片 */
 .film-card img {
   width: 100%;
-  height: auto; /* 修改：根据图片比例自动调整高度 */
+  height: 120px;
   object-fit: cover;
-  border-radius: 0; /* 修改：去掉圆角 */
+  border-radius: 8px;
 }
 
 /* 电影名称 */
@@ -63,14 +51,12 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 10px; /* 新增：添加内边距 */
 }
 
 /* 电影年份 */
 .film-card p {
   font-size: 12px;
   color: #666;
-  padding: 0 10px 10px; /* 新增：添加内边距 */
 }
 
 /* 电影详情页 */
@@ -87,19 +73,15 @@ body {
   margin: 10px 0;
 }
 
-/* 返回按钮样式 */
 #back-button {
-  position: fixed; /* 固定在页面顶部 */
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%); /* 水平居中 */
+  margin-top: 20px;
   padding: 10px 20px;
   background: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 1000; /* 确保按钮在最上层 */
+  transition: background 0.2s;
 }
 
 #back-button:hover {
@@ -141,7 +123,7 @@ body {
   }
 
   .film-card img {
-    height: auto; /* 修改：根据图片比例自动调整高度 */
+    height: 100px; /* 手机端图片高度 */
   }
 
   .film-card h3 {

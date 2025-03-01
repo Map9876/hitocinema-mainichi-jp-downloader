@@ -16,21 +16,32 @@ export const renderFilmList = async (page: number = 1) => {
   const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE); // 计算总页数
 
   // 显示当前页的电影
-  films.forEach((film: Film) => {
-    const filmCard = document.createElement("div");
-    filmCard.className = "film-card";
+films.forEach((film: Film) => {
+  const filmCard = document.createElement("a"); // 使用 <a> 标签
+  filmCard.className = "film-card";
+  filmCard.href = `#/film/${film.id}`; // 使用 Hash 路由
 
-    // 检查 images 是否存在且不为空
-    const imageUrl = film.images && film.images[0] ? film.images[0].image.url : "https://via.placeholder.com/120x160"; // 默认图片
-    filmCard.innerHTML = `
-      <img src="${imageUrl}" alt="${film.name}" />
-      <h3>${film.name}</h3>
-      <p>${film.productionYear}</p>
+  // 检查 images 是否存在且不为空
+  const imageUrl = film.images && film.images[0] ? film.images[0].image.url : null;
+
+  // 如果没有图片，使用 "No Image" 的 SVG
+  const imageContent = imageUrl
+    ? `<img src="${imageUrl}" alt="${film.name}" />`
+    : `
+      <svg width="120" height="160" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160">
+        <rect width="120" height="160" fill="#f0f0f0" />
+        <text x="50%" y="50%" font-family="Arial" font-size="14" fill="#666" text-anchor="middle" dominant-baseline="middle">No Image</text>
+      </svg>
     `;
-    filmCard.addEventListener("click", () => renderFilmDetail(film.id));
-    filmList.appendChild(filmCard);
-  });
 
+  filmCard.innerHTML = `
+    ${imageContent}
+    <h3>${film.name}</h3>
+    <p>${film.productionYear}</p>
+  `;
+
+  filmList.appendChild(filmCard);
+});
   // 显示分页按钮
   renderPagination(totalPages, page);
 };

@@ -20,7 +20,6 @@ export const renderFilmDetail = async (filmId: string) => {
 
   const backButton = document.getElementById("back-button")!;
   backButton.addEventListener("click", () => {
-    filmList.style.display = "grid";
-    filmDetail.style.display = "none";
+    window.location.hash = ""; // 返回电影列表页
   });
 };

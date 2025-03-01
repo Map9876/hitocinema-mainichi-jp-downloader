@@ -1,13 +1,12 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  mode: "development", // 设置为开发模式
   entry: "./src/index.ts",
-  mode: "development", // 或 "production"
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/", //
+    path: path.resolve(__dirname, "build"),
+    publicPath: "/", // 确保静态资源路径正确
   },
   resolve: {
     extensions: [".ts", ".js"],
@@ -23,16 +22,15 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        type: "asset/resource", // 处理图片资源
+      },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, "public"), // 静态资源目录
     },
     compress: true,
     port: 9000,
